@@ -30,27 +30,15 @@ def simp(r):
 
 # and gate
 def And(a,b):
-    if a == True :
-        if b == True :
-            return True
-    else : 
-        return False
+    return (a and b)
 
 # or gate
 def Or(a,b):
-    if a == True:
-        return True
-    elif b == True:
-        return True
-    else :
-        return False
+    return (a or b) 
 
 # not gate
 def Not(a):
-    if a == False:
-        return True
-    else:
-        return False
+	return not(a)	
 
 
 """********************"""

@@ -58,16 +58,24 @@ class Quitter(Frame):
 def run():
   	#raw = raw_input('Please enter a logic statement with A, B, C, D, &, |, ~, (): ')
   	raw = ent.get()
+  	chars = set('ABCD&|~() ,')
+	if any((c in chars) for c in raw):
+		legal = True
+    	else:
+    		print('Illegal characters!')
+    		legal = False
+  		exit()
 	print "Your logic statement %s has been simplified to %s" % (raw, simp(raw))
-	while True:
+	while legal:
 		A = bool(GPIO.input(pinA))	
 		B = bool(GPIO.input(pinB))
 		C = bool(GPIO.input(pinC))
 		D = bool(GPIO.input(pinD))
 		exec 'isTrue = ' + simp(raw)
-		while isTrue:
+		if isTrue:
 			GPIO.output(pinOUT,GPIO.HIGH)
-		GPIO.output(pinOUT,GPIO.LOW)
+		else: 
+			GPIO.output(pinOUT,GPIO.LOW)
 
 def main():
 	#Take in logic statement from user

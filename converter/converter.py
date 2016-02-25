@@ -65,13 +65,14 @@ def run():
     		print('Illegal characters!')
     		legal = False
   		exit()
-	print "Your logic statement %s has been simplified to %s" % (raw, simp(raw))
+  	logic = simp(raw)
+	print "Your logic statement %s has been simplified to %s" % (raw, logic)
 	while legal:
 		A = bool(GPIO.input(pinA))	
 		B = bool(GPIO.input(pinB))
 		C = bool(GPIO.input(pinC))
 		D = bool(GPIO.input(pinD))
-		isTrue = exec simp(raw)
+		isTrue = exec logic
 		if isTrue:
 			GPIO.output(pinOUT,GPIO.HIGH)
 		else: 

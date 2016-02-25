@@ -71,7 +71,7 @@ def run():
 		B = bool(GPIO.input(pinB))
 		C = bool(GPIO.input(pinC))
 		D = bool(GPIO.input(pinD))
-		exec 'isTrue = ' + simp(raw)
+		isTrue = (str)simp(raw)
 		if isTrue:
 			GPIO.output(pinOUT,GPIO.HIGH)
 		else: 

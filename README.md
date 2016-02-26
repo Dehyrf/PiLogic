@@ -7,8 +7,9 @@ Simple python program to get logic statement from the user and run the simplifie
 For this project, the user needs a functional Raspberry Pi, a breadboard, four switches, breadboarding wires, an LED + resistor, and a display/keyboard combo for RPI interaction.
 
 ## Use
-To run the program, run the converter.py file as a super user using the command below:
+To run the program, install dependencies then run the converter.py file as a super user using the commands below:
 
+	$ git clone git://github.com/sympy/sympy.git && cd sympy && python setup.py install && cd ..
 	$ sudo apt-get install python-tk
 	$ sudo python converter/converter.py
 

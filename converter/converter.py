@@ -58,7 +58,6 @@ class Quitter(Frame):
         
 def run():
   	#raw = raw logic statement with A, B, C, D, &, |, ~, ()
-  	raw = ent.get()
   	chars = set('ABCD&|~() ,')
 	if any((c in chars) for c in raw):
 		legal = True
@@ -81,13 +80,18 @@ def run():
 
 def main():
 	#Take in logic statement from user
+	def fetch():
+                global raw
+                raw = ent.get()
+                run()
+
 	root = Tk()
 	ent = Entry(root)
 	ent.insert(0, 'A & (B | C)')               
 	ent.pack(side=TOP, fill=X)                     
 	ent.focus()                                    
-	ent.bind('<Return>', (lambda event: run()))  
-	btn = Button(root, text='Compile', command=run) 
+	ent.bind('<Return>', (lambda event: fetch))  
+	btn = Button(root, text='Compile', command=fetch) 
 	btn.pack(side=LEFT)
 	Quitter(root).pack(side=RIGHT)
 	root.mainloop()

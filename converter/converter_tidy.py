@@ -54,6 +54,8 @@ def Not(a):
 
 class Quitter(Frame):
 
+    # Handles window closing
+
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
         self.pack()
@@ -68,9 +70,8 @@ class Quitter(Frame):
 
 def run():
 
-      # raw = raw_input('Please enter a logic statement with A, B, C, D, &, |, ~, (): ')
+      # raw = raw logic statement with A, B, C, D, &, |, ~, ()
 
-    raw = ent.get()
     chars = set('ABCD&|~() ,')
     if any(c in chars for c in raw):
         legal = True
@@ -97,13 +98,18 @@ def main():
 
     # Take in logic statement from user
 
+    def fetch():
+        global raw
+        raw = ent.get()
+        run()
+
     root = Tk()
     ent = Entry(root)
     ent.insert(0, 'A & (B | C)')
     ent.pack(side=TOP, fill=X)
     ent.focus()
-    ent.bind('<Return>', lambda event: run())
-    btn = Button(root, text='Compile', command=run)
+    ent.bind('<Return>', lambda event: fetch)
+    btn = Button(root, text='Compile', command=fetch)
     btn.pack(side=LEFT)
     Quitter(root).pack(side=RIGHT)
     root.mainloop()

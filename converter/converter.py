@@ -87,7 +87,7 @@ def main():
 	ent.pack(side=TOP, fill=X)                     
 	ent.focus()                                    
 	ent.bind('<Return>', (lambda event: run()))  
-	btn = Button(root, text='Compile', command=fetch) 
+	btn = Button(root, text='Compile', command=run) 
 	btn.pack(side=LEFT)
 	Quitter(root).pack(side=RIGHT)
 	root.mainloop()

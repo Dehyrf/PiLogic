@@ -45,7 +45,8 @@ def Not(a):
 """********************"""
 # main
 """********************"""
-class Quitter(Frame):                          
+class Quitter(Frame):  
+	#Handles window closing                        
     	def __init__(self, parent=None):           
         	Frame.__init__(self, parent)
         	self.pack()
@@ -56,7 +57,7 @@ class Quitter(Frame):
         	if ans: Frame.quit(self)
         
 def run():
-  	#raw = raw_input('Please enter a logic statement with A, B, C, D, &, |, ~, (): ')
+  	#raw = raw logic statement with A, B, C, D, &, |, ~, ()
   	raw = ent.get()
   	chars = set('ABCD&|~() ,')
 	if any((c in chars) for c in raw):
@@ -72,7 +73,7 @@ def run():
 		B = bool(GPIO.input(pinB))
 		C = bool(GPIO.input(pinC))
 		D = bool(GPIO.input(pinD))
-		isTrue = exec logic
+		isTrue = eval(logic)
 		if isTrue:
 			GPIO.output(pinOUT,GPIO.HIGH)
 		else: 
